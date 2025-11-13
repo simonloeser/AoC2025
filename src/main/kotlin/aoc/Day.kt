@@ -3,6 +3,7 @@ package aoc
 import java.io.File
 
 abstract class Day(val dayNumber: Int) {
+    @Suppress("unused")
     protected val input: List<String> by lazy {
         readInput(dayNumber)
     }
