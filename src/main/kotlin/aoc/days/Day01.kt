@@ -24,17 +24,17 @@ class Day01 : Day(1) {
         var crossesZero = 0
 
         for (instruction in input) {
+            val left = instruction.startsWith("L")
             val n = instruction.drop(1).toInt()
-            val old = dial
 
-            if (instruction.startsWith("L")) {
-                if (n > old) crossesZero++
-                dial = (old - n).mod(100)
-            } else {
-                if (old + n >= 100) crossesZero++
-                dial = (old + n).mod(100)
+            repeat(n) {
+                dial = if (left) {
+                    if (dial == 0) 99 else dial - 1
+                } else {
+                    if (dial == 99) 0 else dial + 1
+                }
+                if (dial == 0) crossesZero++
             }
-            if (dial == 0) crossesZero++
         }
         return crossesZero
     }
