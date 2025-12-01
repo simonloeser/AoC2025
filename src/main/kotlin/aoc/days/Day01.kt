@@ -14,12 +14,28 @@ class Day01 : Day(1) {
             } else {
                 (dial + n).mod(100)
             }
-            dialPointedAtZero += if (dial == 0) 1 else 0
+            if (dial == 0) dialPointedAtZero++
         }
-        return "day 1 part 1: $dialPointedAtZero"
+        return dialPointedAtZero
     }
 
     override fun part2(): Any {
-        return "day 1 part 2 test"
+        var dial = 50
+        var crossesZero = 0
+
+        for (instruction in input) {
+            val n = instruction.drop(1).toInt()
+            val old = dial
+
+            if (instruction.startsWith("L")) {
+                if (n > old) crossesZero++
+                dial = (old - n).mod(100)
+            } else {
+                if (old + n >= 100) crossesZero++
+                dial = (old + n).mod(100)
+            }
+            if (dial == 0) crossesZero++
+        }
+        return crossesZero
     }
 }

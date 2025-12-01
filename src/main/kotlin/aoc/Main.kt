@@ -22,5 +22,5 @@ fun main(args: Array<String>) {
     }
 
     println("Day ${day.dayNumber} part 1: ${day.part1()}")
-    println("Day ${day.dayNumber} part 2: ${day.part1()}")
+    println("Day ${day.dayNumber} part 2: ${day.part2()}")
 }
